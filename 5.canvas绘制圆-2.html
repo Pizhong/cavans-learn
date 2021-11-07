@@ -1,0 +1,30 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-11-06 19:54:08
+ * @LastEditTime: 2021-11-07 10:21:53
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \cavans\4.canvas绘制圆.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="circle" width="600" height="600"></canvas>
+  <script type="text/javascript">
+    var circle = document.querySelector('#circle')
+    var ctx = circle.getContext('2d')
+    ctx.beginPath()
+    ctx.moveTo(50, 50)
+      //参数1、2：控制点1坐标   参数3、4：控制点2坐标  参数4：圆弧半径
+    ctx.arcTo(200, 50, 200, 200, 100)
+    ctx.lineTo(200, 200)
+    ctx.stroke()
+  </script>
+</body>
+</html>

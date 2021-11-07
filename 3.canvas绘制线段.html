@@ -1,0 +1,44 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-11-06 19:28:37
+ * @LastEditTime: 2021-11-06 19:48:41
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \cavans\3.canvas绘制线段.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="tutorial" width="600" height="600"></canvas>
+  <script type="text/javascript">
+    var tutorial = document.querySelector('#tutorial')
+    var ctx = tutorial.getContext('2d')
+
+    // 新建一条路径
+    ctx.beginPath()
+    // 设置绘制的起始点
+    ctx.moveTo(50, 50)
+    // 设置经过某个位置
+    ctx.lineTo(50, 300)
+    // 多条线段
+    // ctx.lineTo(300, 100)
+    // ctx.lineTo(300, 250)
+    //闭合路径。会拉一条从当前点到path起始点的直线。如果当前点与起始点重合，则什么都不做
+    ctx.closePath()
+    // 绘制路径
+    ctx.lineCap = 'round' // 设置或返回线条的结束端点样式。
+    ctx.lineJoin = 'round' // 设置或返回两条线相交时，所创建的拐角类型。
+    ctx.miterLimit = 2 // 设置或返回最大斜接长度。1,2,3
+    ctx.lineWidth = 20
+    ctx.strokeStyle = '#0ff0a5'
+    ctx.stroke()
+
+  </script>
+</body>
+</html>
