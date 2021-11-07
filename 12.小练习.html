@@ -1,0 +1,89 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-11-07 13:01:24
+ * @LastEditTime: 2021-11-07 13:43:35
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \cavans\12.小练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .p-canvas-test {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      display: flex;
+      flex-direction: column;
+    }
+    #input {
+      margin-bottom: 10px;
+    }
+    #myCanvas {
+      border:1px solid #d3d3d3;
+    }
+  </style>
+</head>
+<body>
+  <div class="p-canvas-test">
+    <div>
+      <input type="text" id="input">
+      <button id="btn">Click</button>
+    </div>
+    <canvas id="myCanvas" width="300" height="150">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+  </div>
+  <script type="text/javascript">
+    // 输入数值，用canvas画出圆环，显示输入的进度
+    // 输入小数，需要向下取整
+
+    var input = document.getElementById('input')
+    var btn = document.getElementById('btn')
+    var c = document.getElementById("myCanvas") 
+    var ctx = c.getContext("2d")
+    var textValue = 0
+    var n = 0
+    btn.addEventListener('click', function() {
+      textValue = input.value
+      n = Math.floor(textValue)
+      console.log(textValue)
+      draw()
+    })
+    function draw() {
+      ctx.beginPath()
+      ctx.arc(100, 75, 50, 0, 2 * Math.PI)
+      ctx.closePath()
+      ctx.fillStyle = "#d2d4d8"
+      ctx.fill()
+
+      ctx.beginPath()
+      ctx.arc(100, 75, 50, -0.5 * Math.PI, -Math.PI/2 + Math.PI*2/100*n)
+      ctx.closePath()
+      ctx.fillStyle = "#f57123"
+      ctx.fill()
+
+      ctx.beginPath()
+      ctx.arc(100, 75, 46, 0, 2 * Math.PI)
+      ctx.closePath()
+      ctx.fillStyle = "#fff"
+      ctx.fill()
+
+      ctx.font = "bold 10pt Arial"
+      ctx.fillStyle = '#f57123'
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+      ctx.fillText(n + '%', 100, 75)
+    }
+  window.onload = function() {
+    draw()
+  }
+  </script>
+</body>
+</html>
