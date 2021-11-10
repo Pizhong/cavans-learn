@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="600"></canvas>
+  <button id="btn">click</button>
+  <script type="text/javascript">
+    var canvas = document.querySelector('#canvas')
+    var btn = document.querySelector('#btn')
+    var ctx = canvas.getContext('2d')
+    var img = new Image()
+    var codeImg = new Image()
+    img.src = './img/cat.jpeg'
+    codeImg.src = './img/code.png'
+    setTimeout(()=>{
+      ctx.drawImage(img, 0, 0)
+      ctx.font = "100px sans-serif"
+      ctx.fillStyle = '#15b9e4'
+      ctx.fillText("Hello World", 10, 100)
+      ctx.drawImage(codeImg, 0, 0)
+      var base64 = canvas.toDataURL("image/jpeg")
+        console.log(base64)
+        btn.addEventListener('click', function() {
+          var a = document.createElement("a");
+          a.download = 'roomname'+'-'+ randomNum() //下载的文件名，默认是'下载'
+          a.href = base64; 
+          document.body.appendChild(a); a.click(); a.remove();　　//下载之后
+        })
+    }, 500)
+    function randomNum() {
+      var num = 0
+      for(var i=0 ; i<6; i++) {
+        num += Math.floor(Math.random()*10)
+      }
+      return num
+    }
+  </script>
+</body>
+</html>
